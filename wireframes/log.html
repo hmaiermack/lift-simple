@@ -11,24 +11,27 @@
     <nav role="navigation">Nav</nav>
     <!--form with options on top defining what program and workout to log
     form input items would change based on a get request using program/workout-->
+    <header><h3>Log your workout</h3></header>
     
-    
-    <form style="margin-top: 5%;">
+    <form>
         <label for="program-select">Program:</label>
         <select id="program" name="program">
             <option>Program 1</option>
             <option>Program 2</option>
         </select><br>
-        <label for="workout">Workout Name</label>
-        <input type="text" id="workout" name="workout"><br>
-        <label for="ex">Exercise:</label>
-        <input type="text" id="ex" name="ex">
+        <label for="workout">Workout:</label>
+        <select id="workout" name="workout">
+            <option>Workout 1</option>
+            <option>Workout 2</option>    
+        </select><br>
+        <p>form options change based on workout selected</p>
+        <p>Squats</p>
         <label for="set">Sets:</label>
-        <input type="text" id="set" id="set">
+        <input type="text" id="set" id="set"><br>
         <label for="rep">Reps:</label>
         <input type="text" id="rep" name="rep">
     </form>
-    <button> add another exericse</button>
+    <p>other exercises rendered below</p>
     <footer>Footer</footer>
 </body>
 </html>
