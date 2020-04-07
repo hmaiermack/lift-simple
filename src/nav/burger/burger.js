@@ -7,12 +7,10 @@ function Burger(props) {
     return (
     <Menu right >
         <NavLink to="/">Home</NavLink>
+        <NavLink to="/programs">Programs</NavLink>
         <NavLink to="/log">Log Workout</NavLink>
-        {/*Need to determine conditional rendering based on logged in/out 
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/register">Sign Up</NavLink>
         <NavLink to="/login">Log In</NavLink>
-        <Link to="/">Log Out</NavLink>
-        */}
     </Menu>)
 }
 
