@@ -1,0 +1,35 @@
+header {
+    margin-top: 3em
+}
+
+.landing{
+    min-width: 100%;
+    text-align: center;
+    background: #ADD4F4;
+}
+
+.landingHeader > h1 {
+    margin-top: 1em;
+}
+
+.landingHeader {
+    color: white;
+}
+
+.landingHeader > h2 {
+    margin-top: 0;
+}
+
+.signup {
+    background: #FF702B;
+    padding: .5em .75em .5em .75em;
+    border-radius: 1.5em;
+    color: white;
+    text-decoration: none;
+    font-weight: 700
+}
+
+.signup:hover {
+    cursor: pointer;
+    background: rgb(255, 138, 43);
+  }
