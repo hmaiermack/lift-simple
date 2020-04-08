@@ -1,10 +1,12 @@
-import React from 'react'
-import { DeleteButton } from '../DeleteButton/DeleteButton'
+import React, { useContext } from 'react'
+import { GlobalContext } from '../../context/GlobalContext'
+
 
 export const ProgramsListItem = (props) => {
+    const {deleteProgramItem} = useContext(GlobalContext)
     return (
-        <li>
-            {props.name}<DeleteButton />
-        </li>
+        <span>
+            {props.name}<button className="deleteButton" onClick={() => deleteProgramItem(props.id)}>X</button><br></br>
+        </span>
     )
 }

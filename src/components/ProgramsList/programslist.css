@@ -1,0 +1,6 @@
+.programList {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 1em;
+    margin-bottom: 1em;
+}

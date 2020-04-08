@@ -17,6 +17,7 @@ let programs = [
 
 let workouts = [
     {
+        id: 1,
         name: 'Legs',
         program_id: [1, 2],
         exercises: [
@@ -38,6 +39,7 @@ let workouts = [
         ]
     },
     {
+        id: 2,
         name: 'Push',
         program_id: [1],
         exercises: [

@@ -9,7 +9,7 @@ function Burger(props) {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/programs">Programs</NavLink>
         <NavLink to="/log">Log Workout</NavLink>
-        <NavLink to="/register">Sign Up</NavLink>
+        <NavLink to="/register">Register</NavLink>
         <NavLink to="/login">Log In</NavLink>
     </Menu>)
 }

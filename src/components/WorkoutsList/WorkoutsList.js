@@ -1,10 +1,13 @@
 import React from 'react'
-import store from '../../dummystore'
+import { WorkoutItem } from '../WorkoutItem/WorkoutItem'
+import { AddButton } from '../AddButton/AddButton'
 
-export const WorkoutsList = () => {
+export const WorkoutsList = (props) => {
     return (
-        <div>
-            
+        <div className="workoutsList">
+            {props.workouts.map((workout, i) => 
+                <WorkoutItem name={workout.name} key={i} id={workout.id}/>)}
+                <AddButton />
         </div>
     )
 }

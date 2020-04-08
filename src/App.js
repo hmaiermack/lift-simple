@@ -6,11 +6,12 @@ import Nav from './nav/nav'
 import { RegisterPage } from './routes/register/RegisterPage'
 import { LoginPage } from './routes/login/LoginPage';
 import { ProgramsPage } from './routes/programs/ProgramsPage';
+import { GlobalProvider } from './context/GlobalContext'
 
 function App() {
   return (
     <Router>
-    <div className="App">
+    <GlobalProvider className="App">
       <Nav />
       <Switch>
         <Route exact path="/">
@@ -26,7 +27,7 @@ function App() {
           <ProgramsPage />
         </Route>
       </Switch>
-    </div>
+    </GlobalProvider>
     </Router>
   );
 }
