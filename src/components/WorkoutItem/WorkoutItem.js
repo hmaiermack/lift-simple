@@ -1,10 +1,21 @@
-import React, { useContext } from 'react'
-import { DeleteButton } from '../DeleteButton/DeleteButton'
+import React, { useContext, useState } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
-
+ 
 export const WorkoutItem = (props) => {
-    const { deleteWorkoutItem } = useContext(GlobalContext)
+    const { deleteWorkoutItem, activeWorkout } = useContext(GlobalContext)
+
+
+    function handleDelete(e) {
+        activeWorkout(null)
+        deleteWorkoutItem(props.id)        
+    }
+
     return (
-        <span>{props.name}<button className="deleteButton" onClick={() => deleteWorkoutItem(props.id)}>X</button><br></br></span>
+        <div>
+        <span onClick={() => activeWorkout(props.id)}>
+            {props.name}
+        </span>
+        <button className="deleteButton" onClick={handleDelete}>X</button><br></br>
+        </div>
     )
 }
