@@ -7,6 +7,7 @@ import { RegisterPage } from './routes/register/RegisterPage'
 import { LoginPage } from './routes/login/LoginPage';
 import { ProgramsPage } from './routes/programs/ProgramsPage';
 import { GlobalProvider } from './context/GlobalContext'
+import { HistoryPage } from './routes/history/HistoryPage';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path="/programs">
           <ProgramsPage />
+        </Route>
+        <Route path="/history">
+          <HistoryPage />
         </Route>
       </Switch>
     </GlobalProvider>

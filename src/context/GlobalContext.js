@@ -89,6 +89,65 @@ const initialState = {
             ]
         },
     ],
+    history: [
+        {
+            date: '4/12/2020',
+            workout: 'Legs',
+            exercises: [
+                {
+                    name: 'Squats',
+                    data: [
+                        {
+                            reps: 8,
+                            weight: 100
+                        },
+                        {
+                            reps: 8,
+                            weight: 100
+                        },
+                        {
+                            reps: 8,
+                            weight: 100
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            name: 'Deadlifts',
+            data: [
+                {
+                    reps: 8,
+                    weight: 100
+                },
+                {
+                    reps: 8,
+                    weight: 100
+                },
+                {
+                    reps: 8,
+                    weight: 100
+                }
+            ]
+        },
+        {
+            name: 'Lunges',
+            data: [
+                {
+                    reps: 8,
+                    weight: 100
+                },
+                {
+                    reps: 8,
+                    weight: 100
+                },
+                {
+                    reps: 8,
+                    weight: 100
+                }
+            ]
+        }
+    ]
 }
 
 //create context
