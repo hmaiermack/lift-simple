@@ -3,7 +3,7 @@ import { GlobalContext } from '../../context/GlobalContext'
 
 
 export const ProgramsListItem = (props) => {
-    const {deleteProgramItem, activeProgram} = useContext(GlobalContext)
+    const {deleteProgramItem, activeProgram, setChanged, activeWorkout} = useContext(GlobalContext)
 
     function handleDelete(e) {
         activeProgram(null)
@@ -12,7 +12,12 @@ export const ProgramsListItem = (props) => {
 
     return (
         <div>
-        <span onClick={() => activeProgram(props.id)}>
+        <span onClick={() => {
+            setChanged(true)
+            activeProgram(props.id)
+            activeWorkout(null)
+            setChanged(false)
+            }}>
             {props.name}
         </span>
         <button className="deleteButton" onClick={handleDelete}>X</button><br></br>

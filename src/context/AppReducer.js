@@ -1,6 +1,18 @@
 
 export default (state, action) => {
     switch(action.type) {
+        case 'SET_CHANGED':
+            return {
+                ...state,
+                changed: action.payload
+            }
+
+        case 'BURGER_CHANGED':
+            return{
+                ...state,
+                burgerOpen: action.payload
+            }
+
         case 'DELETE_WORKOUT_ITEM':
             return {
                 ...state,
@@ -37,6 +49,12 @@ export default (state, action) => {
             return {
                 ...state,
                 active_workout: action.payload
+            }
+
+        case 'LOG_WORKOUT':
+            return {
+                ...state,
+                history: state.history.concat(action.payload)
             }
     
         default: 

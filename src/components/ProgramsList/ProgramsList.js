@@ -18,23 +18,20 @@ export const ProgramsList = (props) => {
         setProgramName(e.target.value)
     }
 
-    //need to implement form submit logic
-    //why does this have to live in programslist??
     const handleSubmit = (e) => {
-        console.log('type of programs: ' + typeof(programs))
         e.preventDefault();
         programs.push({
             name: programName,
             id: programs.length
         })
         addProgram(programName)
-        console.log('type of programs: ' + typeof(programs))
         setShowAddProgram(false)
 
     }
 
     return (
         <div className="programList">
+            <h4 style={{margin: 0}}>Programs</h4>
             {programs.map(program => 
                 <ProgramsListItem name={program.name} key={program.id} id={program.id} />
             )}

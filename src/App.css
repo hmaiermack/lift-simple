@@ -1,3 +1,13 @@
 .App{
   display: flex
 }
+
+html{
+  margin-top: 3em;
+  display:flex;
+  background: #ADD4F4;
+}
+
+.progChoice:hover, .workChoice:hover{
+  cursor: pointer;
+}

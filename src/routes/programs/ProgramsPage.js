@@ -5,13 +5,15 @@ import { GlobalContext } from '../../context/GlobalContext'
 import { ExerciseList } from '../../components/ExerciseList/ExerciseList'
 
 export const ProgramsPage = () => {
-    const { programs, workouts } = useContext(GlobalContext)
+    const { programs, workouts, active_program, active_workout } = useContext(GlobalContext)
     return (
         <div>
-            <header><h2>Programs</h2></header>
             <ProgramsList programs={programs}/>
-            <WorkoutsList workouts={workouts} />
-            <ExerciseList />
+
+            {active_program !== null &&
+                <WorkoutsList workouts={workouts} />}
+            {active_workout !== null &&
+                <ExerciseList />}
         </div>
     )
 }

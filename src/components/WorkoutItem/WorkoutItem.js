@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
  
 export const WorkoutItem = (props) => {
-    const { deleteWorkoutItem, activeWorkout } = useContext(GlobalContext)
-
+    const { deleteWorkoutItem, activeWorkout, setChanged } = useContext(GlobalContext)
 
     function handleDelete(e) {
         activeWorkout(null)
@@ -12,7 +11,11 @@ export const WorkoutItem = (props) => {
 
     return (
         <div>
-        <span onClick={() => activeWorkout(props.id)}>
+        <span onClick={() => {
+            setChanged(true)
+            activeWorkout(props.id)
+            setChanged(false)
+        }}>
             {props.name}
         </span>
         <button className="deleteButton" onClick={handleDelete}>X</button><br></br>

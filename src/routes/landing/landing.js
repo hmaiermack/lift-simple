@@ -11,7 +11,7 @@ function Landing(props) {
 
             <section>
                 <h3>Log your workouts quickly and easily</h3>
-                <p>placeholder screenshot of log page</p>
+                <p style={{width: 400, height: 250, backgroundColor: 'white', margin: '0 auto 0 auto'}}>placeholder screenshot of log page</p>
                 <p>Lift Simple gives you an easy, unintrusive way to quickly
                 log your exercises and get back to what matters: the workout.
                 </p>
@@ -19,7 +19,7 @@ function Landing(props) {
 
             <section>
                 <h3>Track your progress</h3>
-                <p>placeholder screenshot of history page</p>
+                <p style={{width: 400, height: 250, backgroundColor: 'white', margin: '0 auto 0 auto'}}>placeholder screenshot of history page</p>
                 <p>Find all of your completed workouts in one place and easily
                 see your workout history.
                 </p>

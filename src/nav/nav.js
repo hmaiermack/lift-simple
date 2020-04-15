@@ -6,10 +6,10 @@ import './nav.css'
   
   function Nav(props){
           return(
-          <div className="nav">
+          <nav className="nav">
               <Link to="/"><h1 className="navHeader">Lift Simple.</h1></Link>
               <Burger />
-          </div>
+          </nav>
       )
   }
 

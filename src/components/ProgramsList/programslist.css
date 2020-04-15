@@ -4,3 +4,17 @@
     padding: 1em;
     margin-bottom: 1em;
 }
+
+.workoutsList {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.exerciseList {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 1em;
+    margin-bottom: 1em;
+}
