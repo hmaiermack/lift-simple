@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import moment from 'moment'
 import AppReducer from './AppReducer'
 
 //initial state
@@ -114,7 +115,7 @@ const initialState = {
     ],
     history: [
         {
-            date: new Date("2020-04-16T07:00:00.000Z"),
+            date: moment("2020-04-16T07:00:00.000Z").format('DD/MM/YYYY'),
             workout: 'Legs',
             exercises: [
                 {
@@ -144,7 +145,7 @@ const initialState = {
             ]
         },
         {
-            date: new Date("2020-04-13T07:00:00.000Z"),
+            date: moment("2020-04-13T07:00:00.000Z").format('DD/MM/YYYY'),
             workout: 'Push',
             exercises: [
                 {

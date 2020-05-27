@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
+import  moment from 'moment'
 
 export const LogForm = () => {
     const {workouts, active_workout, active_program, programs, changed, logWorkout, activeProgram, activeWorkout} = useContext(GlobalContext)
@@ -29,7 +30,7 @@ export const LogForm = () => {
 
     function handleSubmit(){
         const history = {}
-        history.date = new Date()
+        history.date = moment().format('DD/MM/YYYY')
         history.workout = workouts[active_workout].name
         history.exercises = []
         

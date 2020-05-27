@@ -5,16 +5,15 @@ import { HistoryItem } from './HistoryItem/HistoryItem'
 export const HistoryTable = (props) => {
     const { history } = useContext(GlobalContext)
 
-    const parentDate = new Date(props.date)
+    const parentDate = props.date
 
     let filtered = []
 
     
     history.forEach(item => {
-        const historyDate = new Date(item.date)
-        if(parentDate.getTime() === historyDate.getTime()){
+        const historyDate = item.date
+        if(parentDate === historyDate){
             filtered.push(item)
-            console.log(filtered)
         }
         else{return null}
     })
