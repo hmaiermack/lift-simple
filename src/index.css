@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.exerciseList {
+  grid-column-start: 2;
+}

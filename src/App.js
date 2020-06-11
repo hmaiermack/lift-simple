@@ -9,6 +9,7 @@ import { ProgramsPage } from './routes/programs/ProgramsPage';
 import { GlobalProvider } from './context/GlobalContext'
 import { HistoryPage } from './routes/history/HistoryPage';
 import { LogPage } from './routes/logPage/logPage';
+import { ProfilePage } from './routes/profile/ProfilePage'
 import { useAuth0 } from "./react-auth0-spa";
 
 
@@ -27,6 +28,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Landing />
+        </Route>
+        <Route path="/profile">
+          <ProfilePage />
         </Route>
         <Route path="/register">
           <RegisterPage />

@@ -13,15 +13,36 @@ function Burger(props) {
         activeWorkout(null);
     }
 
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+    const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  
+    const changePassword = () => {
+        fetch('https://lift-simple.auth0.com/dbconnections/change_password', 
+        {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: user.email,
+                connection: "Username-Password-Authentication"
+            }),
+        })
+        .then(res => console.log(res))
+    }
+
 
     return (
     <Menu right>
+        <span style={{marginBottom: "5px", textDecoration: "underline"}}>{user.name}</span>
         <NavLink to="/" onClick={handleClick}>Home</NavLink>
-        <NavLink to="/programs" onClick={handleClick}>Programs</NavLink>
-        <NavLink to="/log" onClick={handleClick}>Log Workout</NavLink>
-        <NavLink to="/register" onClick={handleClick}>Register</NavLink>
-        <NavLink to="/history" onClick={handleClick}>History</NavLink>
+        {isAuthenticated && 
+        <span>
+        <NavLink className="bm-item" to="/programs" onClick={handleClick}>Programs</NavLink><br></br>
+        <NavLink className="bm-item" to="/log" onClick={handleClick}>Log Workout</NavLink><br></br>
+        <NavLink className="bm-item" to="/register" onClick={handleClick}>Register</NavLink><br></br>
+        <NavLink className="bm-item" to="/history" onClick={handleClick}>History</NavLink><br></br>
+        </span>
+        }
         {!isAuthenticated && (
             <span onClick={() => loginWithRedirect({})}>Log in</span>
         )}
