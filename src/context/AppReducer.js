@@ -56,7 +56,25 @@ export default (state, action) => {
                 ...state,
                 history: state.history.concat(action.payload)
             }
-    
+
+        case 'SET_PROGRAMS':
+            return {
+                ...state,
+                programs: action.payload
+            }
+
+        case 'SET_WORKOUTS':
+            return {
+                ...state,
+                workouts: action.payload
+            }
+
+        case 'SET_HISTORY':
+            return {
+                ...state,
+                history: action.payload
+            }
+
         default: 
             return state;
     }

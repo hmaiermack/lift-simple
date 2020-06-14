@@ -4,6 +4,7 @@ import {NavLink} from 'react-router-dom'
 import './burger.css'
 import { GlobalContext } from '../../context/GlobalContext'
 import { useAuth0 } from "../../react-auth0-spa"
+import {Username} from './Username'
 
 function Burger(props) {
     const { activeProgram, activeWorkout } = useContext(GlobalContext)
@@ -33,21 +34,14 @@ function Burger(props) {
 
     return (
     <Menu right>
-        <span style={{marginBottom: "5px", textDecoration: "underline"}}>{user.name}</span>
+        {isAuthenticated && <Username name={user.name} />}
         <NavLink to="/" onClick={handleClick}>Home</NavLink>
-        {isAuthenticated && 
-        <span>
-        <NavLink className="bm-item" to="/programs" onClick={handleClick}>Programs</NavLink><br></br>
-        <NavLink className="bm-item" to="/log" onClick={handleClick}>Log Workout</NavLink><br></br>
-        <NavLink className="bm-item" to="/register" onClick={handleClick}>Register</NavLink><br></br>
-        <NavLink className="bm-item" to="/history" onClick={handleClick}>History</NavLink><br></br>
-        </span>
-        }
-        {!isAuthenticated && (
-            <span onClick={() => loginWithRedirect({})}>Log in</span>
-        )}
-
+        {isAuthenticated && <NavLink className="bm-item" to="/programs" onClick={handleClick}>Programs</NavLink>}
+        {isAuthenticated && <NavLink className="bm-item" to="/log" onClick={handleClick}>Log Workout</NavLink>}
+        {isAuthenticated && <NavLink className="bm-item" to="/history" onClick={handleClick}>History</NavLink>}
+        {!isAuthenticated && <span onClick={() => loginWithRedirect({})}>Log in</span>}
         {isAuthenticated && <span onClick={() => logout()}>Log out</span>}
+        {/* implement pass change here */}
             
     </Menu>)
 }

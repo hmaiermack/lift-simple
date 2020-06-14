@@ -1,10 +1,36 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
+import {GlobalContext} from '../../context/GlobalContext'
 import './landing.css'
 import {Link} from 'react-router-dom'
+import { useAuth0 } from "../../react-auth0-spa"
+import UserServices from "../../services/UserServices"
+
+
+
 
 function Landing(props) {
+    const { setPrograms, setWorkouts, setHistory } = useContext(GlobalContext)
+
+    /*const { user, getTokenSilently, isAuthenticated } = useAuth0();
+
+    if(isAuthenticated === true)  
+    {const id = user.sub.substr(6)}
+
+    const {getUserData} = UserServices;
+
+    useEffect(() => {
+
+        getTokenSilently()
+        .then(token => getUserData(id, token, setPrograms, setWorkouts, setHistory))
+
+    }, [user])*/
+
+
+
     return (
         <div className="landing">
+            {/*<button onClick={/*() => getTokenSilently()
+                .then(token => getUserData(id, token, setPrograms, setWorkouts, setHistory))}>click me</button>*/}
             <header className="landingHeader">
                 <h1>No hassle, just progress.</h1>
             </header>

@@ -2,10 +2,26 @@ import React, {useContext, useState} from 'react'
 import { ProgramsListItem } from '../ProgramsListItem/ProgramsListItem'
 import './programslist.css'
 import { GlobalContext } from '../../context/GlobalContext'
+import UserServices from "../../services/UserServices"
+import { useAuth0 } from "../../react-auth0-spa"
+
+ 
 
 export const ProgramsList = (props) => {
+    const { user, getTokenSilently } = useAuth0();
+    const { programs, addProgram, workouts, history } = useContext(GlobalContext)
 
-    let{programs, addProgram} = useContext(GlobalContext)
+    const data = {
+        programs,
+        workouts,
+        history
+    }
+
+    const id = user.sub.substr(6);
+
+    const {updateData} = UserServices;
+ 
+
 
     const [showAddProgram, setShowAddProgram] = useState(false);
     const [programName, setProgramName] = useState('')
@@ -25,8 +41,16 @@ export const ProgramsList = (props) => {
             id: programs.length
         })
         addProgram(programName)
-        setShowAddProgram(false)
-
+        console.log(JSON.stringify(data))
+        getTokenSilently()
+                .then(token => 
+                    updateData(id, token, JSON.stringify(data))
+                    .then(res =>
+                        (res.ok) ? 
+                        setShowAddProgram(false)
+                        : alert("Something went wrong.")
+                    )
+                )
     }
 
     return (

@@ -9,199 +9,9 @@ const initialState = {
     active_program: null,
     active_workout: null,
     changed: false,
-    programs: [
-        {
-            name: 'Legs Push Pull',
-            id: 0
-        },
-        {
-            name: 'Upper/Lower',
-            id: 1
-        },
-        {
-            name: 'Starting Strength',
-            id: 2
-        }
-    ],
-    workouts: [
-        {
-            id: 0,
-            name: 'Legs',
-            program_id: 1,
-            exercises: [
-                {
-                    name: 'Squats',
-                    sets: 5,
-                    reps: 5
-                },
-                {
-                    name: 'Deadlifts',
-                    sets: 5,
-                    reps: 5
-                },
-                {
-                    name: 'Lunges',
-                    sets: 3,
-                    reps: 8
-                }
-            ]
-        },
-        {
-            id: 1,
-            name: 'Push',
-            program_id: 1,
-            exercises: [
-                {
-                    name: 'Bench Press',
-                    sets: 5,
-                    reps: 5
-                },
-                {
-                    name: 'Overhead Press',
-                    sets: 3,
-                    reps: 5
-                },
-                {
-                    name: 'Bicep Curl',
-                    sets: 5,
-                    reps: 10
-                },
-            ]
-        },
-        {
-            id: 2,
-            name: 'test',
-            program_id: 2,
-            exercises: [
-                {
-                    name: 'Squats',
-                    sets: 5,
-                    reps: 5
-                },
-                {
-                    name: 'Deadlifts',
-                    sets: 5,
-                    reps: 5
-                },
-                {
-                    name: 'Lunges',
-                    sets: 3,
-                    reps: 8
-                }
-            ]
-        },
-        {
-            id: 3,
-            name: 'Legs',
-            program_id: 2,
-            exercises: [
-                {
-                    name: 'Squats',
-                    sets: 5,
-                    reps: 5
-                },
-                {
-                    name: 'Deadlifts',
-                    sets: 5,
-                    reps: 5
-                },
-                {
-                    name: 'Lunges',
-                    sets: 3,
-                    reps: 8
-                }
-            ]
-        },
-    ],
-    history: [
-        {
-            date: moment("2020-04-16T07:00:00.000Z").format('DD/MM/YYYY'),
-            workout: 'Legs',
-            exercises: [
-                {
-                    name: 'Squats',
-                    data: [
-                        [8, 100], 
-                        [8, 100], 
-                        [8,100]
-                    ]
-                },
-                {
-                    name: 'Deadlifts',
-                    data: [
-                        [8, 100], 
-                        [8, 100], 
-                        [8, 100]
-                    ]
-                },
-                {
-                    name: 'Lunges',
-                    data: [
-                        [8, 100], 
-                        [8, 100], 
-                        [8, 100]
-                    ]
-                },
-            ]
-        },
-        {
-            date: moment("2020-04-13T07:00:00.000Z").format('DD/MM/YYYY'),
-            workout: 'Push',
-            exercises: [
-                {
-                    name: 'Bench Press',
-                    data: [
-                        {
-                            reps: 8,
-                            weight: 100
-                        },
-                        {
-                            reps: 8,
-                            weight: 100
-                        },
-                        {
-                            reps: 8,
-                            weight: 100
-                        }
-                    ]
-                },
-                {
-                    name: 'Overhead Press',
-                    data: [
-                        {
-                            reps: 8,
-                            weight: 100
-                        },
-                        {
-                            reps: 8,
-                            weight: 100
-                        },
-                        {
-                            reps: 8,
-                            weight: 100
-                        }
-                    ]
-                },
-                {
-                    name: 'Bicep Curls',
-                    data: [
-                        {
-                            reps: 8,
-                            weight: 100
-                        },
-                        {
-                            reps: 8,
-                            weight: 100
-                        },
-                        {
-                            reps: 8,
-                            weight: 100
-                        }
-                    ]
-                },
-            ]
-        },
-    ],
+    programs: [],
+    workouts: [],
+    history: [],
 }
 
 //create context
@@ -277,6 +87,27 @@ export const GlobalProvider = ({ children }) => {
         })
     }
 
+    function setPrograms(programs){
+        dispatch({
+            type: 'SET_PROGRAMS',
+            payload: programs
+        })
+    }
+
+    function setWorkouts(workouts){
+        dispatch({
+            type: 'SET_WORKOUTS',
+            payload: workouts
+        })
+    }
+
+    function setHistory(history){
+        dispatch({
+            type: 'SET_HISTORY',
+            payload: history
+        })
+    }
+
 
     return (
         <GlobalContext.Provider value={{
@@ -294,7 +125,10 @@ export const GlobalProvider = ({ children }) => {
             addWorkout,
             activeProgram,
             activeWorkout,
-            logWorkout
+            logWorkout,
+            setPrograms,
+            setWorkouts,
+            setHistory
         }}>
             {children}
         </GlobalContext.Provider>
