@@ -10,18 +10,14 @@ import { useAuth0 } from "../../react-auth0-spa"
 export const ProgramsList = (props) => {
     const { user, getTokenSilently } = useAuth0();
     const { programs, addProgram, workouts, history } = useContext(GlobalContext)
+    const id = user.sub.substr(6);
+    const {updateData} = UserServices;
 
     const data = {
         programs,
         workouts,
         history
     }
-
-    const id = user.sub.substr(6);
-
-    const {updateData} = UserServices;
- 
-
 
     const [showAddProgram, setShowAddProgram] = useState(false);
     const [programName, setProgramName] = useState('')
@@ -43,14 +39,11 @@ export const ProgramsList = (props) => {
         addProgram(programName)
         console.log(JSON.stringify(data))
         getTokenSilently()
-                .then(token => 
-                    updateData(id, token, JSON.stringify(data))
-                    .then(res =>
-                        (res.ok) ? 
-                        setShowAddProgram(false)
-                        : alert("Something went wrong.")
-                    )
-                )
+            .then(token => 
+                updateData(id, token, JSON.stringify(data))
+            )
+
+        setShowAddProgram(false)
     }
 
     return (

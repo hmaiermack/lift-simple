@@ -1,12 +1,25 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
 import  moment from 'moment'
+import UserServices from "../../services/UserServices"
+import { useAuth0 } from "../../react-auth0-spa"
+
 
 export const LogForm = () => {
-    const {workouts, active_workout, active_program, programs, changed, logWorkout, activeProgram, activeWorkout} = useContext(GlobalContext)
+    const {workouts, active_workout, active_program, programs, changed, logWorkout, activeProgram, activeWorkout, history} = useContext(GlobalContext)
+    const { user, getTokenSilently } = useAuth0();
+    const id = user.sub.substr(6);
+    const {updateData} = UserServices;
+
+    const data = {
+        programs,
+        workouts,
+        history
+    }
+    
     let exercises = workouts[active_workout].exercises
-    console.log(exercises)
- 
+
+    
     const [value, setValue] = useState([])
     const [ready, setReady] = useState(false)
 
@@ -45,11 +58,16 @@ export const LogForm = () => {
         })
 
         logWorkout(history)
+        data.history.push(history)
 
         setValue([])
         setReady(false)
         activeProgram(null)
         activeWorkout(null)
+        getTokenSilently()
+        .then(token => 
+            updateData(id, token, JSON.stringify(data))
+        )
     }
 
     

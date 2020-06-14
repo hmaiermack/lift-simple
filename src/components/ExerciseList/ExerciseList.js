@@ -1,9 +1,22 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { ExerciseListItem } from '../ExerciseListItem/ExerciseListItem'
-import { GlobalContext } from '../../context/GlobalContext'
+import { GlobalContext } from '../../context/GlobalContext' 
+import UserServices from "../../services/UserServices"
+import { useAuth0 } from "../../react-auth0-spa"
+
 
 export const ExerciseList = () => {
-    const { workouts, active_workout, deleteExerciseItem } = useContext(GlobalContext)
+    const { workouts, active_workout, deleteExerciseItem, programs, history } = useContext(GlobalContext)
+    const { user, getTokenSilently } = useAuth0();
+    const {updateData} = UserServices;
+    const id = user.sub.substr(6);
+
+    const data = {
+        programs,
+        workouts,
+        history
+    }
+
 
     const [exName, setExName] = useState('')
     const [changed, setChanged] = useState(false)
@@ -18,6 +31,10 @@ export const ExerciseList = () => {
     function handleDelete(e){
         setExName(e.target.name)
         deleteExerciseItem(newEx)
+        getTokenSilently()
+        .then(token => 
+            updateData(id, token, JSON.stringify(data))
+        )
         setChanged(false)
     }
 
@@ -33,6 +50,10 @@ export const ExerciseList = () => {
                 sets: +sets,
                 reps: +reps
             }
+        )
+        getTokenSilently()
+        .then(token => 
+            updateData(id, token, JSON.stringify(data))
         )
         setShowAddExercise(false)
     }

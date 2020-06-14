@@ -1,12 +1,26 @@
 import React, {useContext, useState} from 'react'
 import { WorkoutItem } from '../WorkoutItem/WorkoutItem'
 import { GlobalContext } from '../../context/GlobalContext'
+import UserServices from "../../services/UserServices"
+import { useAuth0 } from "../../react-auth0-spa"
+
 
 export const WorkoutsList = (props) => {
-    const {workouts, active_program, addWorkout} = useContext(GlobalContext)
+    const { user, getTokenSilently } = useAuth0();
+    const {workouts, active_program, addWorkout, programs, history} = useContext(GlobalContext)
+    const {updateData} = UserServices;
+    const id = user.sub.substr(6);
+
+    const data = {
+        programs,
+        workouts,
+        history
+    }
 
     const [showAddWorkout, setShowAddWorkout] = useState(false)
     const [workoutName, setWorkoutName] = useState('')
+
+    
 
     let activeWorkouts = workouts.filter(item  => 
             item.program_id === active_program
@@ -29,9 +43,15 @@ export const WorkoutsList = (props) => {
                 exercises: []
             })
             addWorkout(workoutName)
+            console.log(data)
             activeWorkouts = workouts.filter(item  => 
                 item.program_id === active_program
             )
+            getTokenSilently()
+                .then(token => 
+                    updateData(id, token, JSON.stringify(data))
+                )
+
             setShowAddWorkout(false)
     
         }
