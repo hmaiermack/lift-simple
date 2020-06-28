@@ -31,7 +31,6 @@ export default (state, action) => {
                 workouts: action.payload
             }
 
-            //ask david about this behavior
         case 'ADD_PROGRAM_ITEM':
             return {
                 ...state,

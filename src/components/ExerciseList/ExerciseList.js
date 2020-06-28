@@ -15,7 +15,7 @@ export const ExerciseList = () => {
         programs,
         workouts,
         history
-    }
+    } 
 
 
     const [exName, setExName] = useState('')
@@ -28,15 +28,6 @@ export const ExerciseList = () => {
     const [reps, setReps] = useState('')
 
 
-    function handleDelete(e){
-        setExName(e.target.name)
-        deleteExerciseItem(newEx)
-        getTokenSilently()
-        .then(token => 
-            updateData(id, token, JSON.stringify(data))
-        )
-        setChanged(false)
-    }
 
     function handleAddClick(){
         setShowAddExercise(true)
@@ -80,10 +71,23 @@ export const ExerciseList = () => {
         }
 
         setNewEx(e)
-        setChanged(true)
+        setChanged(!changed)
     }, [newEx, active_workout, exName])
 
-    
+    async function handleDelete(e){
+        setExName(e.target.name)
+        await deleteExerciseItem(newEx)
+        console.log(data.workouts[active_workout])
+        data.workouts[active_workout].exercises.filter(item => item.name !== exName)
+        getTokenSilently()
+        .then(token =>{
+            setChanged(!changed)
+            console.log(data)
+            updateData(id, token, JSON.stringify(data))}
+        )
+        
+    }
+
     return (
         <div className="exerciseList">
             {active_workout !== null &&

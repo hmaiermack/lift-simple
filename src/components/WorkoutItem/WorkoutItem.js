@@ -19,9 +19,14 @@ export const WorkoutItem = (props) => {
     function handleDelete(e) {
         activeWorkout(null)
         deleteWorkoutItem(props.id)
+        const update = {
+            ...data,
+            workouts: data.workouts.filter(item => item.id !== props.id)
+        }
+        console.log(update)
         getTokenSilently()
             .then(token => 
-                updateData(id, token, JSON.stringify(data))
+                updateData(id, token, JSON.stringify(update))
             )
     }
 
