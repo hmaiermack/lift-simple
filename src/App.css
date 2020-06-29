@@ -1,10 +1,9 @@
 .App{
-  display: flex
+  display: grid
 }
 
 html{
   margin-top: 3em;
-  display:flex;
   background: #ADD4F4;
 }
 

@@ -14,9 +14,6 @@ code {
 
 .container {
   display: grid;
-  grid-template-columns: auto auto;
-}
-
-.exerciseList {
-  grid-column-start: 2;
+  height: 100%;
+  width: 100%;
 }
