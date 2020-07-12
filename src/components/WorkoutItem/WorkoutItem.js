@@ -2,9 +2,12 @@ import React, { useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalContext'
 import UserServices from "../../services/UserServices"
 import { useAuth0 } from "../../react-auth0-spa"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTimes} from '@fortawesome/free-solid-svg-icons'
 
  
 export const WorkoutItem = (props) => {
+    const del = <FontAwesomeIcon icon={faTimes} />;
     const { user, getTokenSilently } = useAuth0();
     const { deleteWorkoutItem, activeWorkout, setChanged, programs, workouts, history } = useContext(GlobalContext)
     const id = user.sub.substr(6);
@@ -31,15 +34,15 @@ export const WorkoutItem = (props) => {
     }
 
     return (
-        <div>
-        <span onClick={() => {
-            setChanged(true)
-            activeWorkout(props.id)
-            setChanged(false)
-        }}>
-            {props.name}
-        </span>
-        <button className="deleteButton" onClick={handleDelete}>X</button><br></br>
+        <div className="listItem">
+            <span className="itemName" onClick={() => {
+                setChanged(true)
+                activeWorkout(props.id)
+                setChanged(false)
+            }}>
+                {props.name}
+            </span>
+            <span className="deleteButton" onClick={handleDelete}>{del}</span><br></br>
         </div>
     )
 }

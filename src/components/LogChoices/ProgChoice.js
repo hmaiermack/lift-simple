@@ -5,12 +5,12 @@ export const ProgChoice = () => {
     const {programs, activeProgram, activeWorkout } = useContext(GlobalContext)
     return (
         <div >
-            <h4 style={{margin: 0}}>Select Program</h4>
+            <h4 className="listHeader" style={{margin: 0}}>Select Program</h4>
             {programs.map(program => 
                 <span onClick={() => {
                     activeProgram(program.id)
                     activeWorkout(null)
-                    }} key={program.id} className={"progChoice"}>
+                    }} key={program.id} className={"progChoice itemName listItem"}>
                     {program.name}
                     <br></br>
                 </span>

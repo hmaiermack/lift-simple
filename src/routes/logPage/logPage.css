@@ -1,0 +1,20 @@
+.formHeader {
+    margin-top: .5em;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.exDiv {
+    max-width: fit-content;
+    margin-left: 2em;
+}
+
+.exName {
+    font-size: 1.5em;
+}
+
+.setDiv {
+    font-size: 1.25em;
+    margin-left: 1em;
+    margin-bottom: .25em;
+}

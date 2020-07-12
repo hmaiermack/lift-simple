@@ -2,7 +2,7 @@
 const UserServices = {
     getUserData(id, token, setP, setW, setH) {
         console.log(`user id: ${id} token: ${token}`)
-        return fetch(`http://localhost:8000/api/${id}`, {
+        return fetch(`https://boiling-gorge-72501.herokuapp.com/api/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
               }      
@@ -11,7 +11,7 @@ const UserServices = {
             (!res.ok)
             ? res.status === 404 ?
                 (console.log(`User with id ${id} does not exist. Creating new user.`),
-                fetch(`http://localhost:8000/api/${id}`,{
+                fetch(`https://boiling-gorge-72501.herokuapp.com/api/${id}`,{
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -29,7 +29,7 @@ const UserServices = {
     },
 
     updateData(id, token, data){
-        return fetch(`http://localhost:8000/api/${id}`, {
+        return fetch(`https://boiling-gorge-72501.herokuapp.com/api/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

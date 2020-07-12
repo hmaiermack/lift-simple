@@ -3,9 +3,13 @@ import { ExerciseListItem } from '../ExerciseListItem/ExerciseListItem'
 import { GlobalContext } from '../../context/GlobalContext' 
 import UserServices from "../../services/UserServices"
 import { useAuth0 } from "../../react-auth0-spa"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCheck} from '@fortawesome/free-solid-svg-icons'
+
 
 
 export const ExerciseList = () => {
+    const check = <FontAwesomeIcon icon={faCheck} />;
     const { workouts, active_workout, deleteExerciseItem, programs, history } = useContext(GlobalContext)
     const { user, getTokenSilently } = useAuth0();
     const {updateData} = UserServices;
@@ -89,29 +93,37 @@ export const ExerciseList = () => {
     }
 
     return (
-        <div className="exerciseList">
+        <div className="listContainer">
             {active_workout !== null &&
-                <h4 style={{margin: 0}}>Exercises</h4>}
+                <h4 className="listHeader" style={{margin: 0}}>Exercises</h4>}
             {active_workout !== null && 
             workouts[active_workout].exercises.map((item, index) => 
                 <ExerciseListItem name={item.name} sets={item.sets} reps={item.reps} key={index} handleDelete={handleDelete}/>
             )}
             {showAddExercise && 
-                <form>
-                    <label htmlFor="exerciseName">Exercise Name:</label>
-                    <input type="text" name="exerciseName" value={exerciseName} onChange={handleExChange}></input>
+                //<div className="addExContainer">
+                    <form className="addForm" style={{display: 'flex'}}>
+                        <div>
+                        <label htmlFor="exerciseName">Name: </label>
+                        <input className="addInput" type="text" name="exerciseName" value={exerciseName} onChange={handleExChange}></input>
+                        </div>
 
-                    <label htmlFor="setNum">Sets:</label>
-                    <input type="text" name="setNum" value={sets} onChange={handleSetChange}></input>
+                        <div>
+                        <label htmlFor="setNum">Sets: </label>
+                        <input className="addInput" type="text" name="setNum" value={sets} onChange={handleSetChange}></input>
+                        </div>
 
-                    <label htmlFor="repNum"> Reps:</label>
-                    <input type="text" name="repNum" value={reps} onChange={handleRepChange}></input>
-                    <button type="submit" onClick={handleSubmit}> check</button>
-                </form>
+                        <div>
+                        <label htmlFor="repNum">Reps: </label>
+                        <input className="addInput" type="text" name="repNum" value={reps} onChange={handleRepChange}></input>
+                        </div>
+                        <span className="checkButton" type="submit" onClick={handleSubmit}>{check}</span>
+                    </form>
+                //</div>
             }           
             {showAddExercise !== true &&
                 ( active_workout !== null &&
-                <button onClick={() => handleAddClick()}>Add</button>)
+                <div className="addButton" onClick={() => handleAddClick()}>Add an exercise</div>)
             }
         </div>
     )

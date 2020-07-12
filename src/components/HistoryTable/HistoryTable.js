@@ -19,13 +19,13 @@ export const HistoryTable = (props) => {
     })
 
     return (
-        <ul>
+        <div className="listContainer">
             {filtered.length > 0 &&
                 filtered.map(item => 
                     item.exercises.map((item, idx) => 
                         <HistoryItem exercise={item} key={idx}/>
                     )
                 )}
-        </ul>
+        </div>
     )
 }

@@ -11,7 +11,7 @@ export const WorkChoice = () => {
     return (
         <div>
             {active_program !== null &&
-            <h4 style={{margin: 0}}>Select Workout</h4>}
+            <h4 className="listHeader" style={{margin: '.25em 0 0 0'}}>Select Workout</h4>}
             {activeWorkouts.length === 0 &&
             (active_program !== null &&
             <p style={{margin: 0}}>You haven't added any workouts to this program.</p>)} 
@@ -19,7 +19,7 @@ export const WorkChoice = () => {
                 <span onClick={() => {
                     activeWorkout(workout.id)
                     setChanged(!changed)
-                }} key={workout.id} className={"workChoice"}>
+                }} key={workout.id} className={"workChoice itemName listItem"}>
                     {workout.name}
                     <br></br>
             </span>)}

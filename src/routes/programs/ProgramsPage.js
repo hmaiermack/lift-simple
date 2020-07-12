@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import './progPage.css'
 import { ProgramsList } from '../../components/ProgramsList/ProgramsList'
 import { WorkoutsList } from '../../components/WorkoutsList/WorkoutsList'
 import { GlobalContext } from '../../context/GlobalContext'
@@ -7,7 +8,7 @@ import { ExerciseList } from '../../components/ExerciseList/ExerciseList'
 export const ProgramsPage = () => {
     const { programs, workouts, active_program, active_workout } = useContext(GlobalContext)
     return (
-        <div>
+        <div className='pageContainer'>
             <ProgramsList programs={programs}/>
 
             {active_program !== null &&

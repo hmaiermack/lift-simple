@@ -3,19 +3,22 @@ import { GlobalContext } from '../../context/GlobalContext'
 import { ProgChoice } from '../../components/LogChoices/ProgChoice'
 import { WorkChoice } from '../../components/LogChoices/WorkChoice'
 import { LogForm } from '../../components/LogForm/LogForm'
+import './logPage.css'
 
 export const LogPage = () => {
 
     const { active_program, active_workout } = useContext(GlobalContext)
     return (
-        <div>
-            <header><h1>Log Workout</h1></header>
-            <ProgChoice />
-            {active_program !== null ?
-                <WorkChoice /> :
-                null}
-            {active_workout !== null &&
-                <LogForm />}
+        <div className="pageContainer">
+            <h1>Log Workout</h1>
+            <div className="listContainer" style={{maxWidth: '70%' }}>
+                <ProgChoice />
+                {active_program !== null ?
+                    <WorkChoice /> :
+                    null}
+                {active_workout !== null &&
+                    <LogForm />}
+            </div>
         </div>
     )
 }

@@ -3,9 +3,13 @@ import { WorkoutItem } from '../WorkoutItem/WorkoutItem'
 import { GlobalContext } from '../../context/GlobalContext'
 import UserServices from "../../services/UserServices"
 import { useAuth0 } from "../../react-auth0-spa"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCheck} from '@fortawesome/free-solid-svg-icons'
+
 
 
 export const WorkoutsList = (props) => {
+    const check = <FontAwesomeIcon icon={faCheck} />;
     const { user, getTokenSilently } = useAuth0();
     const {workouts, active_program, addWorkout, programs, history} = useContext(GlobalContext)
     const {updateData} = UserServices;
@@ -57,20 +61,20 @@ export const WorkoutsList = (props) => {
         }
 
     return (
-        <div className="workoutsList">
+        <div className="listContainer">
             {active_program !== null &&
-                <h4 style={{margin: 0}}>Workouts</h4>}
+                <h4 className="listHeader" style={{margin: 0}}>Workouts</h4>}
             {activeWorkouts.map((workout, i) => 
                 <WorkoutItem name={workout.name} key={i} id={workout.id}/>)}
             {showAddWorkout &&
-                <form>
-                <label htmlFor="programName">Workout Name::</label>
-                <input type="text" name="programName" value={workoutName} onChange={handleChange}></input>
-                <button type="submit" onClick={handleSubmit}> check</button>
+                <form className="addForm">
+                <label htmlFor="programName">Workout Name: </label>
+                <input type="text" className="addInput" name="programName" value={workoutName} onChange={handleChange}></input>
+                <span className="checkButton" onClick={handleSubmit}>{check}</span>
             </form>}
             {active_program !== null &&
                 (showAddWorkout !== true &&
-                <button onClick={() => handleAddClick()}>Add</button>)
+                <div className="addButton" onClick={() => handleAddClick()}>Add a workout</div>)
             }
         </div>
     )

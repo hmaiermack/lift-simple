@@ -1,13 +1,17 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTimes} from '@fortawesome/free-solid-svg-icons'
+
 
 export const ExerciseListItem = (props) => {
+    const del = <FontAwesomeIcon icon={faTimes} />;
     
     return (
-        <div>
+        <div className="listItem">
         <span>
             {props.name}: {props.sets} x {props.reps}
         </span>
-        <button className="deleteButton" onClick={props.handleDelete} name={props.name}>X</button><br></br>
+        <span className="deleteButton" onClick={props.handleDelete} name={props.name}>{del}</span><br></br>
         </div>
     )
 }

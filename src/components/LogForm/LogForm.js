@@ -72,9 +72,9 @@ export const LogForm = () => {
 
     
     return (
-        <form>
+        <form className="logForm">
             {ready !== false &&
-                <legend>{programs[active_program].name}: {workouts[active_workout].name}</legend>}
+                <legend className="formHeader">{programs[active_program].name} - {workouts[active_workout].name}</legend>}
             {ready !== false &&
             exercises.map((exercise, index) => {
                 let sets = exercise.sets
@@ -82,18 +82,18 @@ export const LogForm = () => {
                 
                 for(let i = 0; i < sets; i++){
                  group.push(
-                    <div key={`ex${index} div${i}`}>
-                        <span key={`ex${index} set${i}`}>Set {i + 1}:</span>
-                        <label htmlFor={`ex${index}set${i}reps`} key={`ex${index} set${i} reps label`}>Reps</label>
-                        <input type="number" name={`ex${index}set${i}reps`} key={`ex${index} set${i} reps input`} 
+                    <div className="setDiv" key={`ex${index} div${i}`}>
+                        <span className="setNum" key={`ex${index} set${i}`}>Set {i + 1}:</span>
+                        <label className="repLabel" htmlFor={`ex${index}set${i}reps`} key={`ex${index} set${i} reps label`}> Reps   </label>
+                        <input className="addInput" type="number" name={`ex${index}set${i}reps`} key={`ex${index} set${i} reps input`} 
                         value={value[index][i].reps} onChange={(e) => {
                             let temp = value
                             let target = e.target.name
                             temp[index][i][target] = e.target.value
                             setValue(temp)}}></input>
 
-                        <label htmlFor={`ex${index}set${i}weight`} key={`ex${index} set${i} weight label`}>weight</label>
-                        <input type="number" name={`ex${index}set${i}weight`} key={`ex${index} set${i} weight input`} 
+                        <label className="weightLabel" htmlFor={`ex${index}set${i}weight`} key={`ex${index} set${i} weight label`}> Weight  </label>
+                        <input className="addInput" type="number" name={`ex${index}set${i}weight`} key={`ex${index} set${i} weight input`} 
                         value={value[index][i].sets} onChange={(e) => {
                             let temp = value
                             let target = e.target.name
@@ -102,8 +102,8 @@ export const LogForm = () => {
                     </div>
                     )
                 }
-            return <fieldset key={index}>
-                        <legend>
+            return <fieldset className="exDiv" key={index}>
+                        <legend className="exName">
                             {exercise.name} {exercise.sets} x {exercise.reps} 
                         </legend>
                         {group}

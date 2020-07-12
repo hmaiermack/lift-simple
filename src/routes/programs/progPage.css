@@ -1,0 +1,54 @@
+.pageContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.deleteButton, .checkButton {
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.svg-inline--fa.fa-w-11{
+    width: 1em
+}
+.fa-times, .fa-check{
+    border: 1px solid #3A4A4D;
+    border-radius: 5px;
+    margin-left: auto;
+    align-self: flex-end;
+}
+
+.fa-times:hover, .addButton:hover, .fa-check:hover{
+    cursor: pointer;
+    animation-name: btn-hover;
+    animation-duration: 1s;
+    animation-fill-mode: forwards
+}
+
+@keyframes btn-hover{
+    0% {background-color: transparent;
+    border: 1px solid transparent}
+    100% {
+        background-color: #FF702B;
+        color: white;
+        border: 1px solid transparent
+    }
+}
+
+.addButton{
+    margin-top: .25em;
+    padding: .5em 1em .5em 1em;
+    border-radius: 5px;
+    border: 1px solid #3A4A4D;
+    max-width: fit-content;
+
+    font-size: 1.25em;
+}
+
+.addExContainer {
+    max-width: 75%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
