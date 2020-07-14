@@ -1,7 +1,6 @@
 
 const UserServices = {
     getUserData(id, token, setP, setW, setH) {
-        console.log(`user id: ${id} token: ${token}`)
         return fetch(`https://boiling-gorge-72501.herokuapp.com/api/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
