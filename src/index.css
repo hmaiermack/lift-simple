@@ -13,16 +13,17 @@ code {
 }
 
 .container {
-  display: grid;
+  display: flex;
   height: 100%;
   width: 100%;
+  justify-content: center;
 }
 
 * {
   box-sizing: border-box;
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"] {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;

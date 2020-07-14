@@ -9,7 +9,7 @@ export const HistoryTable = (props) => {
 
     let filtered = []
 
-    
+    //filter history array based on date
     history.forEach(item => {
         const historyDate = item.date
         if(parentDate === historyDate){
@@ -19,13 +19,19 @@ export const HistoryTable = (props) => {
     })
 
     return (
-        <div className="listContainer">
+        <div style={{width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             {filtered.length > 0 &&
-                filtered.map(item => 
+            //map over each workout in case of multiple workouts on one date
+                filtered.map((item, idx) => (
+                  <div className="listContainer" key={idx}>
+                  <h3 className="workoutHeader" >{item.date} - {item.workout}</h3>
+                    {//map over each exercise
                     item.exercises.map((item, idx) => 
                         <HistoryItem exercise={item} key={idx}/>
-                    )
-                )}
+                    )}
+                    </div>
+                )
+                    )}
         </div>
     )
 }

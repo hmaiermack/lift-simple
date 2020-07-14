@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from 'react';
-import moment from 'moment'
 import AppReducer from './AppReducer'
 
 //initial state

@@ -9,13 +9,16 @@ import {Username} from './Username'
 function Burger(props) {
     const { activeProgram, activeWorkout } = useContext(GlobalContext)
 
+    //clear state vars for fresh components on navigation
     function handleClick() {
         activeProgram(null);
         activeWorkout(null);
     }
 
+    //auth0 services
     const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
   
+    /*need to look into user account management with auth0 further
     const changePassword = () => {
         fetch('https://lift-simple.auth0.com/dbconnections/change_password', 
         {
@@ -29,7 +32,7 @@ function Burger(props) {
             }),
         })
         .then(res => console.log(res))
-    }
+    }*/
 
 
     return (
@@ -39,6 +42,7 @@ function Burger(props) {
         {isAuthenticated && <NavLink className="bm-item" to="/programs" onClick={handleClick}>Programs</NavLink>}
         {isAuthenticated && <NavLink className="bm-item" to="/log" onClick={handleClick}>Log Workout</NavLink>}
         {isAuthenticated && <NavLink className="bm-item" to="/history" onClick={handleClick}>History</NavLink>}
+        {/*login/out logic handled through auth0, as is acc management*/}
         {!isAuthenticated && <span onClick={() => loginWithRedirect({})}>Log in</span>}
         {isAuthenticated && <span onClick={() => logout()}>Log out</span>}
         {/* implement pass change here */}

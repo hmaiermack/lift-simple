@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    width: 100%;
 }
 
 .deleteButton, .checkButton {
@@ -40,9 +41,10 @@
     margin-top: .25em;
     padding: .5em 1em .5em 1em;
     border-radius: 5px;
-    border: 1px solid #3A4A4D;
+    border: 1px solid #FF702B;
     max-width: fit-content;
-
+    background: transparent;
+    color: #FF702B;
     font-size: 1.25em;
 }
 

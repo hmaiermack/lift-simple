@@ -40,7 +40,6 @@ export const ProgramsList = (props) => {
             id: programs.length
         })
         addProgram(programName)
-        console.log(JSON.stringify(data))
         getTokenSilently()
             .then(token => 
                 updateData(id, token, JSON.stringify(data))
@@ -57,12 +56,12 @@ export const ProgramsList = (props) => {
                 <ProgramsListItem name={program.name} key={program.id} id={program.id} />
             )}
             {showAddProgram ? 
-                <form className="addForm">
+                <form className="addForm" onSubmit={handleSubmit}>
                     <label htmlFor="programName">Program Name: </label>
                     <input type="text" className="addInput" name="programName" value={programName} onChange={handleChange}></input>
                     <span className="checkButton" onClick={handleSubmit}>{check}</span>
                 </form>
-            : <div className="addButton" onClick={() => handleAddClick()}>Add a program</div>}
+            : <button type="button" className="addButton" onClick={() => handleAddClick()}>Add a program</button>}
             
             
         </div>

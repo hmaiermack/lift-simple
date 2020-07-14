@@ -17,7 +17,7 @@ export const CalendarComponent = () => {
 
     let filtered = []
 
-    
+    //needs refactoring, only using it to conditionally render history table 
     history.forEach(item => {
         const historyDate = item.date
         if(date === historyDate){

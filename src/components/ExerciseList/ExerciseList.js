@@ -37,8 +37,10 @@ export const ExerciseList = () => {
         setShowAddExercise(true)
     }
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
+        //update exercise array for current workout with values from state based on user input
         workouts[active_workout].exercises.push(
             {
                 name: exerciseName,
@@ -46,25 +48,35 @@ export const ExerciseList = () => {
                 reps: +reps
             }
         )
+        //auth0
         getTokenSilently()
+        //using token update db
         .then(token => 
             updateData(id, token, JSON.stringify(data))
         )
+        //hide exercise add form and clear state data
+        setExerciseName('')
+        setSets('')
+        setReps('')
         setShowAddExercise(false)
     }
 
+    //update exercise name to add as user adds input
     function handleExChange(e) {
         setExerciseName(e.target.value)
     }
 
+    //update set amount based on user input 
     function handleSetChange(e) {
         setSets(e.target.value)
     }
 
+    //update rep amount based on user input
     function handleRepChange(e) {
         setReps(e.target.value)
     }
 
+    //keep track and update only current workout
     useEffect(() => {
 
         let e = newEx
@@ -78,15 +90,18 @@ export const ExerciseList = () => {
         setChanged(!changed)
     }, [newEx, active_workout, exName])
 
-    async function handleDelete(e){
-        setExName(e.target.name)
-        await deleteExerciseItem(newEx)
-        console.log(data.workouts[active_workout])
+    //needs refactoring/rethinking
+    function handleDelete(e){
+        //set exName to prop passed down to delete button in list item
+        setExName(e.currentTarget.attributes.name.nodeValue)
+        //update context
+        deleteExerciseItem(newEx)
+        setChanged(!changed)
+        workouts[active_workout].exercises.filter(item => item.name !== exName)
         data.workouts[active_workout].exercises.filter(item => item.name !== exName)
         getTokenSilently()
         .then(token =>{
             setChanged(!changed)
-            console.log(data)
             updateData(id, token, JSON.stringify(data))}
         )
         
@@ -101,8 +116,7 @@ export const ExerciseList = () => {
                 <ExerciseListItem name={item.name} sets={item.sets} reps={item.reps} key={index} handleDelete={handleDelete}/>
             )}
             {showAddExercise && 
-                //<div className="addExContainer">
-                    <form className="addForm" style={{display: 'flex'}}>
+                    <form className="addForm" onSubmit={handleSubmit} style={{display: 'flex'}}>
                         <div>
                         <label htmlFor="exerciseName">Name: </label>
                         <input className="addInput" type="text" name="exerciseName" value={exerciseName} onChange={handleExChange}></input>
@@ -119,11 +133,10 @@ export const ExerciseList = () => {
                         </div>
                         <span className="checkButton" type="submit" onClick={handleSubmit}>{check}</span>
                     </form>
-                //</div>
             }           
             {showAddExercise !== true &&
                 ( active_workout !== null &&
-                <div className="addButton" onClick={() => handleAddClick()}>Add an exercise</div>)
+                <button type="button" className="addButton" onClick={() => handleAddClick()}>Add an exercise</button>)
             }
         </div>
     )

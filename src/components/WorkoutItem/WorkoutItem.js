@@ -26,7 +26,6 @@ export const WorkoutItem = (props) => {
             ...data,
             workouts: data.workouts.filter(item => item.id !== props.id)
         }
-        console.log(update)
         getTokenSilently()
             .then(token => 
                 updateData(id, token, JSON.stringify(update))

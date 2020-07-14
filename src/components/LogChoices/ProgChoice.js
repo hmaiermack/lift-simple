@@ -6,6 +6,8 @@ export const ProgChoice = () => {
     return (
         <div >
             <h4 className="listHeader" style={{margin: 0}}>Select Program</h4>
+            {programs.length === 0 &&
+                <p>You haven't created any programs yet!</p>}
             {programs.map(program => 
                 <span onClick={() => {
                     activeProgram(program.id)

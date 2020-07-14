@@ -47,7 +47,6 @@ export const WorkoutsList = (props) => {
                 exercises: []
             })
             addWorkout(workoutName)
-            console.log(data)
             activeWorkouts = workouts.filter(item  => 
                 item.program_id === active_program
             )
@@ -67,14 +66,14 @@ export const WorkoutsList = (props) => {
             {activeWorkouts.map((workout, i) => 
                 <WorkoutItem name={workout.name} key={i} id={workout.id}/>)}
             {showAddWorkout &&
-                <form className="addForm">
+                <form className="addForm" onSubmit={handleSubmit}>
                 <label htmlFor="programName">Workout Name: </label>
                 <input type="text" className="addInput" name="programName" value={workoutName} onChange={handleChange}></input>
                 <span className="checkButton" onClick={handleSubmit}>{check}</span>
             </form>}
             {active_program !== null &&
                 (showAddWorkout !== true &&
-                <div className="addButton" onClick={() => handleAddClick()}>Add a workout</div>)
+                <button type="button" className="addButton" onClick={() => handleAddClick()}>Add a workout</button>)
             }
         </div>
     )

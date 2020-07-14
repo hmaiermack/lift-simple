@@ -9,7 +9,7 @@ export const LogPage = () => {
 
     const { active_program, active_workout } = useContext(GlobalContext)
     return (
-        <div className="pageContainer">
+        <div className="pageContainer logPage">
             <h1>Log Workout</h1>
             <div className="listContainer" style={{maxWidth: '70%' }}>
                 <ProgChoice />

@@ -1,3 +1,17 @@
 .react-calendar {
     margin-top: 1em;
 }
+
+.historyPage {
+    width: 100%;
+}
+
+.workoutHeader {
+    font-size: 2em;
+    align-self: center;
+}
+
+.exHeader {
+    border-bottom: 1px solid rgba(58, 74, 77, .25);
+    font-size: 1.5em;
+}

@@ -23,6 +23,7 @@ export const LogForm = () => {
     const [value, setValue] = useState([])
     const [ready, setReady] = useState(false)
 
+    //map over exercise
     const formVals = exercises.map((exercise, index) => {
         let arr = [];
         for(let i =0; i < exercise.sets; i++){
@@ -80,16 +81,22 @@ export const LogForm = () => {
                 let sets = exercise.sets
                 let group = []
                 
+                //while i is less than the amount of sets for an exercise
                 for(let i = 0; i < sets; i++){
+                 //push a div with input forms for reps and weight to group
                  group.push(
                     <div className="setDiv" key={`ex${index} div${i}`}>
                         <span className="setNum" key={`ex${index} set${i}`}>Set {i + 1}:</span>
                         <label className="repLabel" htmlFor={`ex${index}set${i}reps`} key={`ex${index} set${i} reps label`}> Reps   </label>
                         <input className="addInput" type="number" name={`ex${index}set${i}reps`} key={`ex${index} set${i} reps input`} 
+                        
+                        //set rep value at the exercise index for the nth iteration of for loop
                         value={value[index][i].reps} onChange={(e) => {
                             let temp = value
                             let target = e.target.name
+                            //update temp at exercise index of nth iteration with input name to input value 
                             temp[index][i][target] = e.target.value
+                            //update state value
                             setValue(temp)}}></input>
 
                         <label className="weightLabel" htmlFor={`ex${index}set${i}weight`} key={`ex${index} set${i} weight label`}> Weight  </label>
@@ -110,7 +117,7 @@ export const LogForm = () => {
                     </fieldset>
             })}
             {ready !== false &&
-                <button type="button" onClick={handleSubmit}>Log Workout</button>}
+                <button className="addButton" type="button" onClick={handleSubmit}>Log Workout</button>}
         </form>
     )
 }

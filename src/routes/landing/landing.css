@@ -44,3 +44,7 @@
   .lSection h3 {
       margin: 0 0 1em 0;
   }
+
+  .landingImg {
+      max-width: 70%;
+  }
