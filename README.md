@@ -1,5 +1,5 @@
 # Lift Simple
-## [Live App](lift-simple.com)
+## [Live App](https://lift-simple.com/)
 Lift Simple is a SPA designed to allow you to create, track, and look at your workouts.
 <br>
 
